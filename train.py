@@ -36,7 +36,8 @@ def train():
         output_attentions=False,
         output_hidden_states=False
     )
-        
+   
+
     # sentiment analsis (financial) first
     model_name = 'yiyanghkust/finbert-tone'
     tokenizer = du.getTokenizer(model_name)
