@@ -1,0 +1,7 @@
+<torch.utils.data.dataset.TensorDataset object at 0x15206472a350>
+cuda
+Epoch 1: Average Training Loss = 0.6934297422800485
+Epoch 2: Average Training Loss = 0.6916684671686535
+Epoch 3: Average Training Loss = 0.6918780032736455
+Epoch 4: Average Training Loss = 0.6913910330039332
+Validation Accuracy: 0.54435033812619
