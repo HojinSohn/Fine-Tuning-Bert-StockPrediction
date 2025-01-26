@@ -16,4 +16,4 @@ module load anaconda/2024.02-py311
 source activate SentimentAnalysis
 
 # Run the test code
-python3 ~/sentiment_analysis/train.py
+python3 ~/sentiment_analysis/stock_prediction/train.py

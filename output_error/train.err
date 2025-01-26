@@ -4,3 +4,17 @@ E0000 00:00:1737839649.620236 1899436 cuda_dnn.cc:8310] Unable to register cuDNN
 E0000 00:00:1737839649.662807 1899436 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
 2025-01-25 16:14:10.246048: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Some weights of BertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Traceback (most recent call last):
+  File "/home/sohn31/sentiment_analysis/train.py", line 117, in <module>
+  File "/home/sohn31/sentiment_analysis/train.py", line 44, in train
+  File "/home/sohn31/.conda/envs/cent7/2024.02-py311/SentimentAnalysis/lib/python3.11/site-packages/transformers/modeling_utils.py", line 4224, in from_pretrained
+    ) = cls._load_pretrained_model(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sohn31/.conda/envs/cent7/2024.02-py311/SentimentAnalysis/lib/python3.11/site-packages/transformers/modeling_utils.py", line 4852, in _load_pretrained_model
+    raise RuntimeError(f"Error(s) in loading state_dict for {model.__class__.__name__}:\n\t{error_msg}")
+RuntimeError: Error(s) in loading state_dict for BertForSequenceClassification:
+	size mismatch for classifier.weight: copying a param with shape torch.Size([3, 768]) from checkpoint, the shape in current model is torch.Size([2, 768]).
+	size mismatch for classifier.bias: copying a param with shape torch.Size([3]) from checkpoint, the shape in current model is torch.Size([2]).
+	You may consider adding `ignore_mismatched_sizes=True` in the model `from_pretrained` method.

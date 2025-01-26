@@ -14,16 +14,13 @@ def tokenize_function(text, model_name):
     return tokenizer(text, padding='max_length', truncation=True, max_length=300, return_tensors='pt') #length
 
 def getDataFrame():
-    data_csv = "processed_data.csv"
-    df = pd.read_csv(data_csv)
+    data_csv = "./data_files/train_data.csv"
+    df = pd.read_csv(data_csv, nrows = 10)
     return df
     
 def get_tokenized_data(model_name):
     df = getDataFrame()
     
-    # Convert the list of tokens into strings
-    df['text'] = df['tokens'].apply(lambda x: ' '.join(eval(x)))
-
     tokenized_texts = df['text'].apply(lambda x: tokenize_function(x, model_name)) #bert-base-uncased'
 
     # Prepare input tensors for the model
