@@ -15,7 +15,7 @@ def tokenize_function(text, model_name):
 
 def getDataFrame():
     data_csv = "./data_files/train_data.csv"
-    df = pd.read_csv(data_csv, nrows = 10)
+    df = pd.read_csv(data_csv)
     return df
     
 def get_tokenized_data(model_name):
@@ -29,7 +29,8 @@ def get_tokenized_data(model_name):
 
     
     df['labels'] = df['Open_Close_diff'].apply(lambda x: 1 if x > 0 else 0)
+    
     # Prepare labels (stock price change)
-    labels = torch.tensor(df['labels'].values)  # for regression (continuous)
+    labels = torch.tensor(df['labels'].values)
     
     return [tokenized_texts, input_ids, attention_masks, labels]

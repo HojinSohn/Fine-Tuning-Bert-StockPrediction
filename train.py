@@ -10,8 +10,8 @@ import data_utils as du
 import torch
 
 def train():
-    model_name = 'yiyanghkust/finbert-tone'
-#     model_name = 'bert-base-uncased'
+#     model_name = 'yiyanghkust/finbert-tone'
+    model_name = 'bert-base-uncased'
     tokenized_texts, input_ids, attention_masks, labels = du.get_tokenized_data(model_name) # change finance or what
     
     # Split into train and validation sets
@@ -23,10 +23,8 @@ def train():
     train_dataset = TensorDataset(train_inputs, train_masks, train_labels)
     val_dataset = TensorDataset(val_inputs, val_masks, val_labels)
 
-    print(train_dataset)
-
     # Create DataLoaders
-    batch_size = 16 
+    batch_size = 32 
 
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)

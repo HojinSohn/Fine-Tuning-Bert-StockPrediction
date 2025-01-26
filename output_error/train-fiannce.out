@@ -1,0 +1,6 @@
+cuda
+Epoch 1: Average Training Loss = 0.6997434476698478
+Epoch 2: Average Training Loss = 0.6933855215864857
+Epoch 3: Average Training Loss = 0.6704628731322101
+Epoch 4: Average Training Loss = 0.528513065168238
+Validation Accuracy: 0.49044711443766004
