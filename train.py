@@ -29,29 +29,29 @@ def train():
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
     
-#     # Load pretrained BERT model with a classification head
-#     model = BertForSequenceClassification.from_pretrained(
-#         'bert-base-uncased',
-#         num_labels=2,  # Binary classification
-#         output_attentions=False,
-#         output_hidden_states=False
-#     )
-   
-
-    # sentiment analsis (financial) first
-    model_finance_sentiment = BertForSequenceClassification.from_pretrained(
-        model_name, 
-        num_labels=2,
-        ignore_mismatched_sizes=True,
+    # Load pretrained BERT model with a classification head
+    model = BertForSequenceClassification.from_pretrained(
+        'bert-base-uncased',
+        num_labels=2,  # Binary classification
         output_attentions=False,
         output_hidden_states=False
     )
+   
+
+    # sentiment analsis (financial) first
+    #model_finance_sentiment = BertForSequenceClassification.from_pretrained(
+    #    model_name, 
+    #    num_labels=2,
+    #    ignore_mismatched_sizes=True,
+    #    output_attentions=False,
+    #    output_hidden_states=False
+    #)
     
     # set model to finance / change if needed
-    model = model_finance_sentiment
+    #model = model_finance_sentiment
     
     # Optimizer
-    optimizer = AdamW(model.parameters(), lr=2e-5, eps=1e-8)
+    optimizer = AdamW(model.parameters(), lr=25e-6, eps=1e-8)
 
     # Loss function for binary classification
     loss_fn = BCEWithLogitsLoss()
@@ -116,6 +116,8 @@ def train():
 
     accuracy = accuracy_score(true_labels, predictions)
     print(f"Validation Accuracy: {accuracy}")
+    
+    torch.save(model.state_dict(), 'bert_stock_predictor.pth')
 
 if __name__ == "__main__":
     train()

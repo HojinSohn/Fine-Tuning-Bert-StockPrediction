@@ -5,8 +5,8 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=120G
 #SBATCH --time=3:00:00
-#SBATCH --job-name train
-#SBATCH --output train.out
+#SBATCH --job-name train-lr25
+#SBATCH --output train-lr25.out
 #SBATCH --error train.err
 
 # Run python file.
